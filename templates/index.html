@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Recommender System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 36px;
+            margin-bottom: 0px;
+            color: #444;
+        }
+        form {
+            max-width: 500px;
+            margin: auto;
+        }
+        label {
+            font-size: 18px;
+            margin-bottom: 10px;
+            display: block;
+        }
+        select {
+            font-size: 16px;
+            padding: 10px;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        button {
+            font-size: 18px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    
+    <h1><span class="icon">&#127909;</span>Movie Recommender System</h1>
+    <form action="/recommendations" method="post">
+        <label for="movie">Select a movie:</label>
+        <select name="movie" id="movie">
+            <option value="None">None</option>
+            {% for movie in movies %}
+            <option value="{{ movie }}">{{ movie }}</option>
+            {% endfor %}
+        </select>
+        <label for="genres">Select preferred genres:</label>
+        <select name="genres" id="genres" multiple>
+            {% for genre in genres %}
+            <option value="{{ genre }}">{{ genre }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Show Recommendations</button>
+    </form>
+</body>
+</html>
